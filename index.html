@@ -14,15 +14,31 @@
   <img src="assets/images/whatsappicon.png" alt="WhatsApp" />
 </a>
 <body class="textured-bg">
-  <header class="navbar">
-    <a href="index.html" class="logo">Gen-z Fit</a>
-    <nav>
-      <a href="shop.html">Shop</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="cart.html" class="cart-link" data-count="0">🛒</a>
-    </nav>
-  </header>
+ <header class="navbar">
+  <!-- Hamburger Menu Icon -->
+  <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+
+  <!-- Centered Logo -->
+  <div class="logo-center">
+    <a href="index.html" class="logo">Gen-Z Fit</a>
+  </div>
+
+  <!-- Navigation Menu (unchanged) -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="cart.html">Cart 🛒</a>
+  </nav>
+</header>
+
+<!-- Sidebar Slide-Out Menu -->
+<div id="sidebar" class="sidebar">
+  <a href="#">New Arrival</a>
+  <a href="#">Trendy</a>
+  <a href="#">Gen-Z</a>
+</div>
 
   <section class="hero">
   <div class="hero-text-background">
@@ -70,5 +86,11 @@
     const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
     document.querySelector(".cart-link").setAttribute("data-count", totalQty);
   </script>
+  <script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+  }
+</script>
 </body>
 </html>
