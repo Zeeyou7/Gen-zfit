@@ -1,30 +1,161 @@
 
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  padding-top: 60px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.9);
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Montserrat:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #2d2d2d;
+  color: #e0e0e0;
 }
 
-.modal-content {
-  display: block;
-  margin: auto;
-  max-width: 90%;
-  max-height: 80%;
+.textured-bg {
+  background-color: #2d2d2d;
+  background-image: url("https://www.transparenttextures.com/patterns/black-thread.png");
+  background-size: cover;
+  background-repeat: repeat;
 }
 
-.close {
-  position: absolute;
-  top: 30px;
-  right: 40px;
-  color: white;
-  font-size: 40px;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #1f1f1f;
+  align-items: center;
+}
+
+.navbar .logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
   font-weight: bold;
-  cursor: pointer;
+  color: #cccccc;
+  text-decoration: none;
+}
+
+.navbar nav a {
+  color: #d0d0d0;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: 500;
+  position: relative;
+}
+
+.navbar nav a.cart-link::after {
+  content: attr(data-count);
+  background: #888;
+  color: white;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  position: absolute;
+  top: -10px;
+  right: -15px;
+}
+
+.hero-image {
+  height: 90vh;
+  background: linear-gradient(to right, #333, #2b2b2b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero-text {
+  color: #eeeeee;
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.hero-btn {
+  background-color: #666;
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.hero-btn:hover {
+  background-color: #888;
+}
+
+.hero-btn.small {
+  font-size: 0.9rem;
+  padding: 0.4rem 1rem;
+}
+
+.collection-preview {
+  padding: 3rem 2rem;
+  background-color: #383838;
+  text-align: center;
+}
+
+.collection-preview h2 {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.collection-preview p {
+  color: #ccc;
+}
+
+.collection-images {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.collection-images img {
+  width: 300px;
+  border-radius: 8px;
+}
+
+.bestsellers {
+  background: #2a2a2a;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.bestsellers h2 {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.product {
+  background: #1e1e1e;
+  color: #f0f0f0;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.product img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+footer {
+  background: #1a1a1a;
+  color: #aaa;
+  padding: 2rem;
+  text-align: center;
 }
