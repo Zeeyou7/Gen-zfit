@@ -58,7 +58,7 @@ document.getElementById('checkout-form').addEventListener('submit', (e) => {
       if (paymentMethod.value === 'cod') {
         const message = encodeURIComponent(
           'Order from Gen-z Fit:\n' + 
-          cartItems.map(item => `Rs{item.name} - Rs{item.price}`).join('\n')
+          cartItems.map(item => `${item.name} - $${item.price}`).join('\n')
         );
         window.location.href = 'https://wa.me/923177272773?text=' + message;
       } else {
