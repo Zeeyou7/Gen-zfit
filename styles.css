@@ -288,15 +288,3 @@ footer {
   margin-top: 20px;
   transition: background 0.3s;
 }
-
-.hero-btn:hover {
-  background: #1f1f1f; /* darker charcoal on hover */
-}
-.hero-text-background {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 30px 40px;
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.2);
-  color: #fff;
-}
