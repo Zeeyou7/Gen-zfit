@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -22,7 +24,8 @@ body {
 }
 
 .navbar .logo {
-  font-size: 1.8rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
   font-weight: bold;
   color: #ff4ecb;
 }
@@ -32,6 +35,19 @@ body {
   text-decoration: none;
   margin-left: 1.5rem;
   font-weight: 500;
+  position: relative;
+}
+
+.navbar nav a.cart-link::after {
+  content: attr(data-count);
+  background: #ff4ecb;
+  color: white;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  position: absolute;
+  top: -10px;
+  right: -15px;
 }
 
 .hero {
@@ -106,6 +122,21 @@ footer {
   margin-bottom: 0.5rem;
 }
 
+.product button {
+  background: linear-gradient(to right, #ff4ecb, #8e44ad);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.product button:hover {
+  background: linear-gradient(to right, #8e44ad, #ff4ecb);
+}
+
 .contact form {
   display: flex;
   flex-direction: column;
@@ -140,4 +171,31 @@ footer {
   color: #ff4ecb;
   margin: 0 0.5rem;
   text-decoration: none;
+}
+
+.checkout-form {
+  background: #1e1e1e;
+  padding: 2rem;
+  max-width: 600px;
+  margin: auto;
+  border-radius: 8px;
+  color: white;
+}
+
+.checkout-form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: none;
+}
+
+.checkout-form button {
+  background: linear-gradient(to right, #ff4ecb, #8e44ad);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
 }
