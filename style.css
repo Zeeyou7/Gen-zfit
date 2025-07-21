@@ -1,41 +1,30 @@
+
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
   margin: 0;
-  padding: 0;
-  color: #222;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(120deg, #111, #333);
+  color: #fff;
 }
 header {
-  background: #111;
-  color: #fff;
-  padding: 1rem;
-  text-align: center;
+  background: #222;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 nav a {
-  color: #fff;
   margin: 0 10px;
+  color: #fff;
   text-decoration: none;
 }
-main {
-  padding: 2rem;
-}
-.products {
-  display: flex;
-  gap: 2rem;
-}
-.product {
-  background: #fff;
-  padding: 1rem;
-  border-radius: 5px;
+.hero {
   text-align: center;
+  padding: 80px 20px;
+  background-image: url('https://images.unsplash.com/photo-1535914254981-b5012eebbd15');
+  background-size: cover;
+  background-blend-mode: overlay;
+  background-color: rgba(0,0,0,0.5);
 }
-button {
-  padding: 0.5rem 1rem;
-  background: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-button:hover {
-  background: #0056b3;
+.hero h2 {
+  font-size: 3em;
 }

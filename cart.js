@@ -1,52 +1,45 @@
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-function addToCart(name, price) {
-  cart.push({ name, price });
+let cart = [];
+
+function addToCart(product, price) {
+  cart.push({ product, price });
+  alert(product + " added to cart!");
   localStorage.setItem('cart', JSON.stringify(cart));
-  updateCartCount();
-  alert(name + " added to cart!");
 }
 
-function updateCartCount() {
-  document.querySelectorAll('#cart-count').forEach(el => el.textContent = cart.length);
-}
-
-function displayCartItems() {
-  const list = document.getElementById('cart-items');
-  const total = document.getElementById('cart-total');
-  if (!list) return;
-  list.innerHTML = '';
-  let sum = 0;
-  cart.forEach(item => {
-    const li = document.createElement('li');
-    li.textContent = item.name + ' - ' + item.price + ' PKR';
-    list.appendChild(li);
-    sum += item.price;
+function renderCart() {
+  const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
+  let container = document.getElementById('cart-items');
+  if (!container) return;
+  container.innerHTML = '';
+  let total = 0;
+  cartItems.forEach((item, index) => {
+    total += item.price;
+    container.innerHTML += `
+      <div>
+        ${item.product} - PKR ${item.price}
+        <button onclick="removeItem(${index})">Remove</button>
+      </div>`;
   });
-  total.textContent = sum;
+  container.innerHTML += `<p>Total: PKR ${total}</p>`;
 }
 
-function displayCheckoutTotal() {
-  const el = document.getElementById('checkout-total');
-  if (!el) return;
-  let sum = 0;
-  cart.forEach(item => sum += item.price);
-  el.textContent = sum;
+function removeItem(index) {
+  let cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
+  cartItems.splice(index, 1);
+  localStorage.setItem('cart', JSON.stringify(cartItems));
+  renderCart();
 }
 
-function placeOrder() {
+function checkout() {
+  const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
   const payment = document.querySelector('input[name="payment"]:checked').value;
-  const sum = cart.reduce((total, item) => total + item.price, 0);
-  const summary = cart.map(item => `${item.name}`).join(', ');
   if (payment === 'cod') {
-    const message = `Hi, I want to place this order: ${summary} for ${sum} PKR (Cash on Delivery)`;
-    const whatsappURL = `https://wa.me/923177272773?text=${encodeURIComponent(message)}`;
-    window.open(whatsappURL, '_blank');
+    const message = encodeURIComponent("Hi, I want to order:\n" + cartItems.map(item => item.product + " - PKR " + item.price).join("\n"));
+    window.open("https://wa.me/923177272773?text=" + message, "_blank");
   } else {
-    alert("Visa card processing coming soon...");
+    alert("Visa checkout is not set up yet.");
   }
 }
 
-updateCartCount();
-displayCartItems();
-displayCheckoutTotal();
+window.onload = renderCart;
