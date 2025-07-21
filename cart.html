@@ -72,6 +72,14 @@ cartContainer.innerHTML = cartItems.map((item, index) => `
     <button class="remove-btn" data-index="${index}">❌ Remove</button>
   </div>
 `).join('');
+   document.querySelectorAll('.remove-btn').forEach(button => {
+  button.addEventListener('click', (e) => {
+    const index = e.target.getAttribute('data-index');
+    cartItems.splice(index, 1); // Remove item from cart array
+    localStorage.setItem('cart', JSON.stringify(cartItems)); // Update storage
+    location.reload(); // Refresh the page to reflect change
+  });
+});
   paymentMethod.addEventListener('change', () => {
     visaForm.style.display = paymentMethod.value === 'visa' ? 'block' : 'none';
   });
