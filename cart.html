@@ -63,7 +63,7 @@
         cartItems.map(item => `${item.name} - Rs ${item.price}`).join('\n') // Changed $ to Rs
       );
 
-      // ✅ Clear the cart BEFORE redirecting (safer)
+      // ✅ Clear the cart AFTER redirecting (safer)
       localStorage.removeItem('cart');
 
       // ✅ Redirect to WhatsApp
