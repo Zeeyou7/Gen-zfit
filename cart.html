@@ -52,7 +52,7 @@
     const visaForm = document.getElementById('visa-form');
 
     cartContainer.innerHTML = cartItems.map(item => `
-      <p><strong>${item.name}</strong> - $${item.price}</p>
+      <p><strong>${item.name}</strong> - Rs${item.price}</p>
     `).join('');
 
     paymentMethod.addEventListener('change', () => {
@@ -64,7 +64,7 @@ document.getElementById('checkout-form').addEventListener('submit', (e) => {
       if (paymentMethod.value === 'cod') {
         const message = encodeURIComponent(
           'Order from Gen-z Fit:\n' + 
-          cartItems.map(item => `${item.name} - $${item.price}`).join('\n')
+          cartItems.map(item => `${item.name} - Rs${item.price}`).join('\n')
         );
         window.location.href = 'https://wa.me/923177272773?text=' + message;
       } else {
