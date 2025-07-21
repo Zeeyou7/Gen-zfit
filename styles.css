@@ -408,3 +408,26 @@ nav a {
 .footer-links a:hover {
   background-color: #444;
 }
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .navbar nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .navbar .logo {
+    font-size: 1.5rem;
+  }
+
+  .navbar nav a {
+    font-size: 1rem;
+  }
+}
