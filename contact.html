@@ -3,32 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gen-Z Fit | Contact</title>
+  <title>Contact - Gen-z Fit</title>
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="contact">
-  <header><h1>Contact Us</h1></header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact</a>
-    <a href="cart.html">Cart</a>
-  </nav>
-  <main>
+<body class="textured-bg">
+  <header class="navbar">
+    <div class="logo">Gen-z Fit</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Cart 🛒</a>
+    </nav>
+  </header>
+
+  <section class="contact">
+    <h2>Contact Us</h2>
     <form>
-      <label>Name:</label><br />
-      <input type="text" placeholder="Your Name" required /><br /><br />
-      
-      <label>Email:</label><br />
-      <input type="email" placeholder="Your Email" required /><br /><br />
-      
-      <label>Message:</label><br />
-      <textarea placeholder="Your Message" rows="5" required></textarea><br /><br />
-      
-      <button type="submit">Send Message</button>
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="Email" required />
+      <textarea placeholder="Your message..." required></textarea>
+      <button type="submit">Send</button>
     </form>
-  </main>
+    <div class="social-links">
+      <p>Follow us:</p>
+      <a href="#">Instagram</a> |
+      <a href="#">Facebook</a> |
+      <a href="#">Twitter</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Gen-z Fit. All rights reserved.</p>
+  </footer>
 </body>
 </html>

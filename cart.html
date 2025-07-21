@@ -1,30 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gen-Z Fit | Cart</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - Gen-z Fit</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="cart">
-  <header><h1>Your Cart</h1></header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact</a>
-    <a href="cart.html">Cart</a>
-  </nav>
-  <main>
-    <ul id="cart-items"></ul>
-    <p id="total"></p>
+<body>
+  <header class="navbar">
+    <div class="logo">Gen-z Fit</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Cart 🛒</a>
+    </nav>
+  </header>
 
-    <h3>Checkout Options</h3>
-    <label><input type="radio" name="payment" /> Cash on Delivery</label><br />
-    <label><input type="radio" name="payment" /> Visa Card</label><br />
-    <button onclick="placeOrder()">Place Order</button>
-  </main>
-  <script src="script.js"></script>
+  <section class="cart">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <form id="checkout-form">
+      <h3>Checkout</h3>
+      <input type="text" placeholder="Name" required>
+      <input type="text" placeholder="Address" required>
+      <input type="email" placeholder="Email" required>
+      <select id="payment-method">
+        <option value="cod">Cash on Delivery</option>
+        <option value="visa">Visa Card</option>
+      </select>
+      <div id="visa-form" style="display: none;">
+        <input type="text" placeholder="Card Number">
+        <input type="text" placeholder="Expiry Date">
+        <input type="text" placeholder="CVV">
+      </div>
+      <button type="submit">Place Order</button>
+    </form>
+  </section>
+
+  <script>
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartContainer = document.getElementById('cart-items');
+    const paymentMethod = document.getElementById('payment-method');
+    const visaForm = document.getElementById('visa-form');
+
+    cartContainer.innerHTML = cartItems.map(item => `
+      <p><strong>${item.name}</strong> - $${item.price}</p>
+    `).join('');
+
+    paymentMethod.addEventListener('change', () => {
+      visaForm.style.display = paymentMethod.value === 'visa' ? 'block' : 'none';
+    });
+
+    document.getElementById('checkout-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (paymentMethod.value === 'cod') {
+        const message = encodeURIComponent(
+          'Order from Gen-z Fit:\n' + 
+          cartItems.map(item => `${item.name} - $${item.price}`).join('\n')
+        );
+        window.location.href = 'https://wa.me/923177272773?text=' + message;
+      } else {
+        alert('Visa card payment submitted (mock)');
+      }
+    });
+  </script>
 </body>
 </html>
