@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gen-Z Fit | Cart</title>
+  <title>Gen-Z Fit | Contact</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="cart">
-  <header><h1>Your Cart</h1></header>
+<body class="contact">
+  <header><h1>Contact Us</h1></header>
   <nav>
     <a href="index.html">Home</a>
     <a href="shop.html">Shop</a>
@@ -16,11 +16,12 @@
     <a href="cart.html">Cart</a>
   </nav>
   <main>
-    <p>No items in cart.</p>
-    <h3>Checkout Options</h3>
-    <label><input type="radio" name="payment">Cash on Delivery</label><br>
-    <label><input type="radio" name="payment">Visa Card</label><br>
-    <button>Place Order</button>
+    <form>
+      <label>Name:</label><input type="text" required><br>
+      <label>Email:</label><input type="email" required><br>
+      <label>Message:</label><textarea required></textarea><br>
+      <button type="submit">Send</button>
+    </form>
   </main>
 </body>
 </html>

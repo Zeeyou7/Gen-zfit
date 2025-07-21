@@ -1,31 +1,24 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shop | Gen-Z Fit</title>
-  <link rel="stylesheet" href="style.css"/>
+  <title>Gen-Z Fit | Shop</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <header>
-    <h1>Gen-Z Fit</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="shop.html">Shop</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="contact.html">Contact</a>
-      <a href="cart.html" class="cart-icon">🛒 Cart</a>
-    </nav>
-  </header>
-  <section class="shop">
-    <div class="product-card">
-      <img src="https://via.placeholder.com/200x250.png?text=T-Shirt+1" alt="T-shirt" />
-      <h3>Gen-Z Tee</h3>
-      <p>PKR 1000</p>
-      <button onclick="addToCart('Gen-Z Tee', 1000)">Add to Cart</button>
-    </div>
-  </section>
-  <script src="cart.js"></script>
+<body class="shop">
+  <header><h1>Shop</h1></header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+    <a href="cart.html">Cart</a>
+  </nav>
+  <main class="products">
+    <div class="product"><img src="https://via.placeholder.com/200x200?text=T-Shirt+1"><p>Rs. 1000</p><button>Add to Cart</button></div>
+    <div class="product"><img src="https://via.placeholder.com/200x200?text=T-Shirt+2"><p>Rs. 1000</p><button>Add to Cart</button></div>
+    <div class="product"><img src="https://via.placeholder.com/200x200?text=T-Shirt+3"><p>Rs. 1000</p><button>Add to Cart</button></div>
+  </main>
 </body>
 </html>
