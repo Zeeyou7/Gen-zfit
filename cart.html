@@ -66,10 +66,16 @@
   const paymentMethod = document.getElementById('payment-method');
   const visaForm = document.getElementById('visa-form');
 
-  cartContainer.innerHTML = cartItems.map(item => `
-    <p><strong>${item.name}</strong> - Rs${item.price}</p>
-  `).join('');
-
+ cartContainer.innerHTML = cartItems.map((item, index) => `
+  <div class="cart-item">
+    <img src="${item.image}" alt="${item.name}" class="cart-img">
+    <div class="cart-details">
+      <p><strong>${item.name}</strong></p>
+      <p>Rs${item.price}</p>
+    </div>
+    <button class="remove-btn" data-index="${index}">❌ Remove</button>
+  </div>
+`).join('');
   paymentMethod.addEventListener('change', () => {
     visaForm.style.display = paymentMethod.value === 'visa' ? 'block' : 'none';
   });
