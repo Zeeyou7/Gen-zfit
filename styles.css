@@ -259,25 +259,3 @@ footer {
 .remove-btn:hover {
   background-color: #cc0000;
 }
-.hero {
-  background: url('assets/images/wrapup.jpg') no-repeat center center/cover;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.hero-text-background {
-  background: rgba(0, 0, 0, 0.6); /* semi-transparent dark background */
-  padding: 30px 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-}
-
-.hero-text-background h1,
-.hero-text-background p {
-  color: white;
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-}
