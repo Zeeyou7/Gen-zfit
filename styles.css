@@ -256,9 +256,6 @@ footer {
   transition: background-color 0.3s ease;
 }
 
-.remove-btn:hover {
-  background-color: #cc0000;
-}
 .hero {
   background-image: url('assets/images/wrapup.jpg'); /* your actual image path */
   background-size: cover;
