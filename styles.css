@@ -270,6 +270,15 @@ footer {
   align-items: center;
 }
 
+/* ✅ Dark overlay only around text */
+.hero-text-background {
+  background: rgba(0, 0, 0, 0.5); /* this is what’s making the black rounded background */
+  padding: 40px 60px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+}
+
 /* Optional: Button styling */
 .hero-btn {
   display: inline-block;
