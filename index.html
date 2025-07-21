@@ -15,19 +15,29 @@
 </a>
 <body class="textured-bg">
  <header class="navbar">
-  <!-- Hamburger Menu Icon -->
-  <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+  <!-- 🍔 Hamburger (left) -->
+  <div class="hamburger" onclick="toggleSidebar()">☰</div>
 
-  <!-- Centered Logo -->
-  <div class="logo-center">
-    <a href="index.html" class="logo">Gen-Z Fit</a>
+  <!-- 🧠 Sidebar content -->
+  <div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</a>
+    <a href="#">New Arrival</a>
+    <a href="#">Trendy</a>
+    <a href="#">Gen-Z Way</a>
   </div>
 
-  <!-- Navigation Menu (unchanged) -->
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="cart.html">Cart 🛒</a>
+  <!-- 👕 Center Logo -->
+  <a href="index.html" class="logo">Gen-z Fit</a>
+
+  <!-- 🛍️ Right side nav: Home, Shop, Cart -->
+  <nav class="nav-group">
+    <div class="nav-top">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+    </div>
+    <div class="nav-bottom">
+      <a href="cart.html">Cart 🛒</a>
+    </div>
   </nav>
 </header>
 
