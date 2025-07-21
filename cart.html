@@ -53,18 +53,26 @@
       visaForm.style.display = paymentMethod.value === 'visa' ? 'block' : 'none';
     });
 
-    document.getElementById('checkout-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (paymentMethod.value === 'cod') {
-        const message = encodeURIComponent(
-          'Order from Gen-z Fit:\n' + 
-          cartItems.map(item => `${item.name} - $${item.price}`).join('\n')
-        );
-        window.location.href = 'https://wa.me/923177272773?text=' + message;
-      } else {
-        alert('Visa card payment submitted (mock)');
-      }
-    });
-  </script>
+    <script>
+  document.getElementById('checkout-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if (paymentMethod.value === 'cod') {
+      const message = encodeURIComponent(
+        'Order from Gen-z Fit:\n' + 
+        cartItems.map(item => `${item.name} - Rs ${item.price}`).join('\n') // Changed $ to Rs
+      );
+
+      // ✅ Clear the cart BEFORE redirecting (safer)
+      localStorage.removeItem('cart');
+
+      // ✅ Redirect to WhatsApp
+      window.location.href = 'https://wa.me/923177272773?text=' + message;
+
+    } else {
+      alert('Visa card payment submitted (mock)');
+    }
+  });
+</script>
 </body>
 </html>
