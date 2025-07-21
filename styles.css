@@ -323,57 +323,76 @@ footer {
 }
 .navbar {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 15px 30px;
   background-color: #1a1a1a;
+  color: white;
   position: relative;
 }
 
-.logo-center {
+/* Logo centered */
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  font-family: 'Orbitron', sans-serif;
-  text-decoration: none;
-  color: white;
+/* Right-side nav */
+.nav-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
 }
 
-.menu-icon {
-  font-size: 24px;
+.nav-top {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-bottom {
+  margin-top: 5px;
+}
+
+.nav-group a {
   color: white;
+  text-decoration: none;
+  padding: 6px 12px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-group a:hover {
+  background-color: #333;
+  border-radius: 6px;
+}
+
+/* Hamburger on left */
+.hamburger {
+  font-size: 1.8rem;
   cursor: pointer;
-  position: relative;
-  z-index: 1001;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
 }
 
 /* Sidebar */
 .sidebar {
-  height: 100vh;
+  height: 100%;
   width: 0;
   position: fixed;
+  z-index: 2;
   top: 0;
   left: 0;
-  background-color: #121212;
+  background-color: #111;
   overflow-x: hidden;
-  transition: 0.5s;
+  transition: 0.3s;
   padding-top: 60px;
-  z-index: 1000;
 }
 
 .sidebar a {
-  padding: 12px 30px;
+  padding: 12px 20px;
   text-decoration: none;
   font-size: 18px;
   color: white;
@@ -381,30 +400,31 @@ nav a {
 }
 
 .sidebar a:hover {
-  background-color: #2c2c2c;
-}
-.footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #1a1a1a;
-  color: white;
-  margin-top: 40px;
+  background-color: #575757;
 }
 
-.footer-links {
-  margin-top: 10px;
+.closebtn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
 }
 
-.footer-links a {
-  text-decoration: none;
-  color: #fff;
-  margin: 0 15px;
-  padding: 8px 16px;
-  background-color: #333;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-}
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .nav-group {
+    align-items: center;
+  }
 
-.footer-links a:hover {
-  background-color: #444;
+  .nav-top {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    position: relative;
+    transform: none;
+    left: auto;
+  }
 }
