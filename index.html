@@ -3,37 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gen-z Fit - Home</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Gen-z Fit</title>
+  <link href="styles.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="textured-bg">
   <header class="navbar">
-    <div class="logo">Gen-z Fit</div>
+    <a href="index.html" class="logo">Gen-z Fit</a>
     <nav>
-      <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
-      <a href="cart.html">Cart 🛒</a>
+      <a href="cart.html" class="cart-link" data-count="0">🛒</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>Style That Moves With You</h1>
-    <p>Gen-z Fit brings you the perfect blend of comfort and trend.</p>
+  <section class="hero-image">
+    <div class="hero-text">
+      <h1>GEN-Z FIT WEAR</h1>
+      <p>Clothing for the bold. Made for Gen Z.</p>
+      <a href="shop.html" class="hero-btn">Explore Collection</a>
+    </div>
   </section>
 
-  <section class="newsletter">
-    <h2>Stay Updated</h2>
-    <p>Sign up to get the latest drops and offers.</p>
-    <form>
-      <input type="email" placeholder="Enter your email" required/>
-      <button type="submit">Subscribe</button>
-    </form>
+  <section class="collection-preview">
+    <div class="collection-text">
+      <h2>SUMMER COLLECTION 2025</h2>
+      <p>Minimal | Functional | Streetwear</p>
+    </div>
+    <div class="collection-images">
+      <img src="assets/images/tee1.jpg" alt="Collection 1">
+      <img src="assets/images/tee2.jpg" alt="Collection 2">
+    </div>
+  </section>
+
+  <section class="bestsellers">
+    <h2>Bestsellers</h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="assets/images/tee1.jpg" alt="T-shirt 1">
+        <h3>Urban Edge Tee</h3>
+        <p>Rs. 2000</p>
+        <a href="shop.html" class="hero-btn small">Shop Now</a>
+      </div>
+      <div class="product">
+        <img src="assets/images/tee2.jpg" alt="T-shirt 2">
+        <h3>Street Style Tee</h3>
+        <p>Rs. 2000</p>
+        <a href="shop.html" class="hero-btn small">Shop Now</a>
+      </div>
+    </div>
   </section>
 
   <footer>
     <p>&copy; 2025 Gen-z Fit. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Update cart count from localStorage
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
+    document.querySelector(".cart-link").setAttribute("data-count", totalQty);
+  </script>
 </body>
 </html>
