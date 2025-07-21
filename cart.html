@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gen-Z Fit | Shop</title>
+  <title>Gen-Z Fit | Cart</title>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="shop">
-  <header><h1>Shop</h1></header>
+<body class="cart">
+  <header><h1>Your Cart</h1></header>
   <nav>
     <a href="index.html">Home</a>
     <a href="shop.html">Shop</a>
@@ -16,22 +16,14 @@
     <a href="contact.html">Contact</a>
     <a href="cart.html">Cart</a>
   </nav>
-  <main class="products">
-    <div class="product">
-      <img src="https://via.placeholder.com/200x200?text=T-Shirt+1">
-      <p>T-Shirt 1 - Rs. 1000</p>
-      <button onclick="addToCart('T-Shirt 1', 1000)">Add to Cart</button>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/200x200?text=T-Shirt+2">
-      <p>T-Shirt 2 - Rs. 1000</p>
-      <button onclick="addToCart('T-Shirt 2', 1000)">Add to Cart</button>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/200x200?text=T-Shirt+3">
-      <p>T-Shirt 3 - Rs. 1000</p>
-      <button onclick="addToCart('T-Shirt 3', 1000)">Add to Cart</button>
-    </div>
+  <main>
+    <ul id="cart-items"></ul>
+    <p id="total"></p>
+
+    <h3>Checkout Options</h3>
+    <label><input type="radio" name="payment" /> Cash on Delivery</label><br />
+    <label><input type="radio" name="payment" /> Visa Card</label><br />
+    <button onclick="placeOrder()">Place Order</button>
   </main>
   <script src="script.js"></script>
 </body>
