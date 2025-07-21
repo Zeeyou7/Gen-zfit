@@ -259,3 +259,39 @@ footer {
 .remove-btn:hover {
   background-color: #cc0000;
 }
+.hero {
+  background-image: url('assets/images/wrapup.jpg'); /* your actual image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ✅ Dark overlay only around text */
+.hero-text-background {
+  background: rgba(0, 0, 0, 0.5); /* this is what’s making the black rounded background */
+  padding: 40px 60px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+}
+
+/* Optional: Button styling */
+.hero-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: background 0.3s;
+}
+
+.hero-btn:hover {
+  background: #1ea855;
+}
