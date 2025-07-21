@@ -280,7 +280,7 @@ footer {
 .hero-btn {
   display: inline-block;
   padding: 12px 30px;
-  background: #383838;
+  background: #333333; /* charcoal color */
   color: #fff;
   border-radius: 50px;
   font-size: 1.1rem;
@@ -290,5 +290,5 @@ footer {
 }
 
 .hero-btn:hover {
-  background: #1ea855;
+  background: #1f1f1f; /* darker charcoal on hover */
 }
