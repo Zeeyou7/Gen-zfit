@@ -40,7 +40,7 @@
     <h2>Shop Our Tees</h2>
     <div class="product-grid">
       <div class="product">
-        <img src="assets/images/tee1.jpg" alt="T-shirt 1">
+       <img src="assets/images/tee1.jpg" alt="" class="T-shirt 1" onclick="openPreview(this)">
         <h3>Urban Edge Tee</h3>
         <p>Rs. 2000</p>
         <button class="add-to-cart-btn" onclick="addToCart('Urban Edge Tee', 2000)">Add to Cart</button>
@@ -86,5 +86,9 @@
     <a href="about.html">About</a>
   </div>
 </footer>
+  <div id="imagePreview" class="image-preview" onclick="closePreview()">
+  <span class="close-btn">&times;</span>
+  <img id="previewImg" src="" alt="Full View" />
+</div>
 </body>
 </html>
