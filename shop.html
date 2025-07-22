@@ -90,5 +90,17 @@
   <span class="close-btn">&times;</span>
   <img id="previewImg" src="" alt="Full View" />
 </div>
+  <script>
+  function openPreview(imgElement) {
+    const preview = document.getElementById('imagePreview');
+    const previewImg = document.getElementById('previewImg');
+    previewImg.src = imgElement.src;
+    preview.style.display = 'flex';
+  }
+
+  function closePreview() {
+    document.getElementById('imagePreview').style.display = 'none';
+  }
+</script>
 </body>
 </html>
