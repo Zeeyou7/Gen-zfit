@@ -115,20 +115,30 @@
       visaForm.style.display = paymentMethod.value === 'visa' ? 'block' : 'none';
     });
 
-    document.getElementById('checkout-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      localStorage.removeItem('cart');
-      cartContainer.innerHTML = '';
-      cartTotal.textContent = '';
-      const successMessage = document.createElement('p');
-      successMessage.textContent = '✅ Order placed successfully!';
-      successMessage.style.color = 'green';
-      successMessage.style.fontWeight = 'bold';
-      cartContainer.appendChild(successMessage);
-      setTimeout(() => {
-        window.location.href = 'index.html';
-      }, 3000);
-    });
+document.getElementById('checkout-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const name = document.querySelector('input[placeholder="Your name"]').value;
+  const address = document.querySelector('input[placeholder="Shipping address"]').value;
+  const email = document.querySelector('input[placeholder="Email address"]').value;
+  const phone = document.querySelector('input[placeholder="Phone number"]').value;
+
+  const orderDetails = cartItems.map(item => `${item.name} - Rs${item.price}`).join('%0A');
+  const totalAmount = cartItems.reduce((sum, item) => sum + parseFloat(item.price), 0);
+
+  const message = 
+    `*New Order from Gen-Z Fit*%0A` +
+    `👤 Name: ${name}%0A` +
+    `📍 Address: ${address}%0A` +
+    `📧 Email: ${email}%0A` +
+    `📞 Phone: ${phone}%0A%0A` +
+    `🛒 *Order Items:*%0A${orderDetails}%0A%0A` +
+    `💰 *Total:* Rs${totalAmount}`;
+
+  // Clear cart and redirect to WhatsApp
+  localStorage.removeItem('cart');
+  window.location.href = `https://wa.me/923177272773?text=${encodeURI(message)}`;
+});
   </script>
 
   <script>
