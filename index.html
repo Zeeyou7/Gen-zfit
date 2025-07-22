@@ -94,7 +94,7 @@
     const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
     document.querySelector(".cart-link").setAttribute("data-count", totalQty);
   </script>
-  <script>
+ <script>
   function toggleSidebar() {
     const sidebar = document.getElementById("sidebar");
     sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
