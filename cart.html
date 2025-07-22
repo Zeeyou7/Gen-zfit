@@ -80,63 +80,57 @@
     </form>
   </section>
 
- <script>
-  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-  const cartContainer = document.getElementById('cart-items');
-  const paymentMethod = document.getElementById('payment-method');
-  const visaForm = document.getElementById('visa-form');
+  <script>
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartContainer = document.getElementById('cart-items');
+    const paymentMethod = document.getElementById('payment-method');
+    const visaForm = document.getElementById('visa-form');
+    const cartTotal = document.getElementById('cart-total');
 
-  // Display Cart Items
-  cartContainer.innerHTML = cartItems.map((item, index) => `
-    <div class="cart-item">
-      <p><strong>${item.name}</strong> - Rs${item.price}</p>
-      <button class="remove-btn" data-index="${index}">❌ Remove</button>
-    </div>
-  `).join('');
+    let totalAmount = 0;
 
-  // Remove item from cart
-  document.querySelectorAll('.remove-btn').forEach(button => {
-    button.addEventListener('click', (e) => {
-      const index = e.target.getAttribute('data-index');
-      cartItems.splice(index, 1);
-      localStorage.setItem('cart', JSON.stringify(cartItems));
-      location.reload();
+    cartContainer.innerHTML = cartItems.map((item, index) => {
+      totalAmount += parseInt(item.price);
+      return `
+        <div class="cart-item">
+          <p><strong>${item.name}</strong> - Rs${item.price}</p>
+          <button class="remove-btn" data-index="${index}">❌ Remove</button>
+        </div>
+      `;
+    }).join('');
+
+    // ✅ Show total amount
+    cartTotal.textContent = `Total: Rs${totalAmount}`;
+
+    document.querySelectorAll('.remove-btn').forEach(button => {
+      button.addEventListener('click', (e) => {
+        const index = e.target.getAttribute('data-index');
+        cartItems.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+        location.reload();
+      });
     });
-  });
 
-  paymentMethod.addEventListener('change', () => {
-    visaForm.style.display = paymentMethod.value === 'visa' ? 'block' : 'none';
-  });
+    paymentMethod.addEventListener('change', () => {
+      visaForm.style.display = paymentMethod.value === 'visa' ? 'block' : 'none';
+    });
 
-  // On form submit: redirect to WhatsApp with order details
-  document.getElementById('checkout-form').addEventListener('submit', (e) => {
-    e.preventDefault();
+    document.getElementById('checkout-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      localStorage.removeItem('cart');
+      cartContainer.innerHTML = '';
+      cartTotal.textContent = '';
+      const successMessage = document.createElement('p');
+      successMessage.textContent = '✅ Order placed successfully!';
+      successMessage.style.color = 'green';
+      successMessage.style.fontWeight = 'bold';
+      cartContainer.appendChild(successMessage);
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 3000);
+    });
+  </script>
 
-    const name = document.querySelector('input[placeholder="Your name"]').value;
-    const phone = document.querySelector('input[placeholder="Phone Number"]').value;
-    const address = document.querySelector('input[placeholder="Shipping address"]').value;
-    const email = document.querySelector('input[placeholder="Email address"]').value;
-
-    const orderDetails = cartItems.map(item => `${item.name} - Rs${item.price}`).join('\n');
-    const total = cartItems.reduce((sum, item) => sum + parseFloat(item.price), 0);
-
-    const message = `
-      *New Order from Gen-Z Fit*%0A
-      👤 Name: ${name}%0A
-      📞 Phone: ${phone}%0A
-      📧 Email: ${email}%0A
-      🏠 Address: ${address}%0A
-      🛒 Order Items:%0A${orderDetails}%0A
-      💰 Total: Rs${total}
-    `;
-
-    // Clear the cart
-    localStorage.removeItem('cart');
-
-    // Redirect to WhatsApp
-    window.location.href = `https://wa.me/923177272773?text=${message}`;
-  });
-</script>
   <script>
     function toggleSidebar() {
       const sidebar = document.getElementById("sidebar");
