@@ -127,12 +127,12 @@ document.getElementById('checkout-form').addEventListener('submit', (e) => {
   const totalAmount = cartItems.reduce((sum, item) => sum + parseFloat(item.price), 0);
 
   const message = 
-    `*New Order from Gen-Z Fit*%0A` +
-    `👤 Name: ${name}%0A` +
-    `📍 Address: ${address}%0A` +
-    `📧 Email: ${email}%0A` +
-    `📞 Phone: ${phone}%0A%0A` +
-    `🛒 *Order Items:*%0A${orderDetails}%0A%0A` +
+    `*THANK YOU FOR ORDRING FROM Gen-Z Fit*` +
+    `👤 Name: ${name}` +
+    `📍 Address: ${address}` +
+    `📧 Email: ${email}` +
+    `📞 Phone: ${phone}` +
+    `🛒 *Order Items:*${orderDetails}` +
     `💰 *Total:* Rs${totalAmount}`;
 
   // Clear cart and redirect to WhatsApp
