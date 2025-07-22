@@ -14,32 +14,31 @@
   <img src="assets/images/whatsappicon.png" alt="WhatsApp" />
 </a>
 <body class="textured-bg">
- <header class="navbar">
-  <!-- 🍔 Hamburger (left) -->
-  <div class="hamburger" onclick="toggleSidebar()">☰</div>
+<header class="navbar">
+  <!-- Hamburger Menu Icon -->
+  <div class="menu-icon" onclick="toggleSidebar()">☰</div>
 
-  <!-- 🧠 Sidebar content -->
-  <div id="sidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</a>
-    <a href="#">New Arrival</a>
-    <a href="#">Trendy</a>
-    <a href="#">Gen-Z Way</a>
+  <!-- Centered Logo -->
+  <div class="logo-center">
+    <a href="index.html" class="logo">Gen-Z Fit</a>
   </div>
 
-  <!-- 👕 Center Logo -->
-  <a href="index.html" class="logo">Gen-z Fit</a>
-
-  <!-- 🛍️ Right side nav: Home, Shop, Cart -->
-  <nav class="nav-group">
-    <div class="nav-top">
-      <a href="index.html">Home</a>
-      <a href="shop.html">Shop</a>
-    </div>
-    <div class="nav-bottom">
-      <a href="cart.html">Cart 🛒</a>
-    </div>
+  <!-- Navigation Menu (unchanged) -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="cart.html">Cart 🛒</a>
   </nav>
 </header>
+
+<!-- Sidebar Slide-Out Menu -->
+<div id="sidebar" class="sidebar">
+  <a href="#">New Arrival</a>
+  <a href="#">Trendy</a>
+  <a href="#">Gen-Z</a>
+</div>
 
 <!-- Sidebar Slide-Out Menu -->
 <div id="sidebar" class="sidebar">
@@ -94,7 +93,7 @@
     const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
     document.querySelector(".cart-link").setAttribute("data-count", totalQty);
   </script>
- <script>
+<script>
   function toggleSidebar() {
     const sidebar = document.getElementById("sidebar");
     sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
