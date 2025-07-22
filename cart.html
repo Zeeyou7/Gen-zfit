@@ -44,8 +44,7 @@
     <div id="cart-items"></div>
     <div id="cart-total" style="font-weight: bold; margin-top: 10px;"></div> <!-- ✅ Added -->
 
-    <form action="https://formsubmit.co/lierego3@gmail.com" method="POST" id="checkout-form" class="checkout-form">
-    <input type="hidden" name="Cart Items" id="cart-data">
+    <form id="checkout-form" class="checkout-form">
       <h3>Checkout</h3>
 
       <label>Name</label>
@@ -115,10 +114,6 @@
     paymentMethod.addEventListener('change', () => {
       visaForm.style.display = paymentMethod.value === 'visa' ? 'block' : 'none';
     });
-    const cartDataInput = document.getElementById('cart-data');
-const cartSummary = cartItems.map(item => `${item.name} - Rs${item.price}`).join(', ');
-const totalAmount = cartItems.reduce((sum, item) => sum + parseInt(item.price), 0);
-cartDataInput.value = `${cartSummary} | Total: Rs${totalAmount}`;
 
     document.getElementById('checkout-form').addEventListener('submit', (e) => {
       e.preventDefault();
