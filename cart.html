@@ -13,16 +13,29 @@
   <img src="assets/images/whatsappicon.png" alt="WhatsApp" />
 </a>
 <body>
-  <header class="navbar">
-    <a href="index.html" class="logo">Gen-z Fit</a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="shop.html">Shop</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="cart.html">Cart 🛒</a>
-    </nav>
-  </header>
+ <header class="navbar">
+  <!-- Hamburger Menu Icon -->
+  <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+
+  <!-- Centered Logo -->
+  <div class="logo-center">
+    <a href="index.html" class="logo">Gen-Z Fit</a>
+  </div>
+
+  <!-- Navigation Menu (unchanged) -->
+  <nav>
+    <a href="cart.html">Cart 🛒</a>
+  </nav>
+</header>
+
+<!-- Sidebar Slide-Out Menu -->
+<div id="sidebar" class="sidebar">
+  <a href="index.html">Home</a>
+  <a href="#">New Arrival</a>
+  <a href="#">Trendy</a>
+  <a href="#">Gen-Z</a>
+  <a href="shop.html">Shop</a> <!-- Moved into sidebar -->
+</div>
 
   <section class="cart">
     <h2>Your Cart</h2>
@@ -105,4 +118,10 @@ cartContainer.innerHTML = cartItems.map((item, index) => `
       window.location.href = 'index.html';
     }, 3000);
   });
+</script>
+<script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+  }
 </script>
