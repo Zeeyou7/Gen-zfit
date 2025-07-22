@@ -1,127 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cart - Gen-z Fit</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-   <a href="https://wa.me/923177272773" 
+
+<a href="https://wa.me/923177272773" 
    class="whatsapp-float" 
    target="_blank" 
    title="Chat on WhatsApp">
   <img src="assets/images/whatsappicon.png" alt="WhatsApp" />
 </a>
+
 <body>
- <header class="navbar">
-  <!-- Hamburger Menu Icon -->
-  <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+  <header class="navbar">
+    <!-- Hamburger Menu Icon -->
+    <div class="menu-icon" onclick="toggleSidebar()">☰</div>
 
-  <!-- Centered Logo -->
-  <div class="logo-center">
-    <a href="index.html" class="logo">Gen-Z Fit</a>
+    <!-- Centered Logo -->
+    <div class="logo-center">
+      <a href="index.html" class="logo">Gen-Z Fit</a>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav>
+      <a href="cart.html">Cart 🛒</a>
+    </nav>
+  </header>
+
+  <!-- Sidebar Slide-Out Menu -->
+  <div id="sidebar" class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="#">New Arrival</a>
+    <a href="#">Trendy</a>
+    <a href="#">Gen-Z</a>
+    <a href="shop.html">Shop</a>
   </div>
-
-  <!-- Navigation Menu (unchanged) -->
-  <nav>
-    <a href="cart.html">Cart 🛒</a>
-  </nav>
-</header>
-
-<!-- Sidebar Slide-Out Menu -->
-<div id="sidebar" class="sidebar">
-  <a href="index.html">Home</a>
-  <a href="#">New Arrival</a>
-  <a href="#">Trendy</a>
-  <a href="#">Gen-Z</a>
-  <a href="shop.html">Shop</a> <!-- Moved into sidebar -->
-</div>
 
   <section class="cart">
     <h2>Your Cart</h2>
     <div id="cart-items"></div>
-   <form id="checkout-form" class="checkout-form">
-  <h3>Checkout</h3>
+    <div id="cart-total" style="font-weight: bold; margin-top: 10px;"></div> <!-- ✅ Added -->
 
-  <label>Name</label>
-  <input type="text" placeholder="Your name" required>
+    <form id="checkout-form" class="checkout-form">
+      <h3>Checkout</h3>
 
-  <label>Address</label>
-  <input type="text" placeholder="Shipping address" required>
+      <label>Name</label>
+      <input type="text" placeholder="Your name" required>
 
-  <label>Email</label>
-  <input type="email" placeholder="Email address" required>
+      <label>Address</label>
+      <input type="text" placeholder="Shipping address" required>
 
-  <label>Payment Method</label>
-  <select id="payment-method">
-    <option value="cod">Cash on Delivery</option>
-    <option value="visa">Visa Card</option>
-  </select>
+      <label>Email</label>
+      <input type="email" placeholder="Email address" required>
 
-  <div id="visa-form" style="display: none;">
-    <label>Card Number</label>
-    <input type="text" placeholder="Card Number">
-    
-    <label>Expiry Date</label>
-    <input type="text" placeholder="MM/YY">
-    
-    <label>CVV</label>
-    <input type="text" placeholder="CVV">
-  </div>
+      <label>Payment Method</label>
+      <select id="payment-method">
+        <option value="cod">Cash on Delivery</option>
+        <option value="visa">Visa Card</option>
+      </select>
 
-  <button type="submit">Place Order</button>
-</form>
+      <div id="visa-form" style="display: none;">
+        <label>Card Number</label>
+        <input type="text" placeholder="Card Number">
+        
+        <label>Expiry Date</label>
+        <input type="text" placeholder="MM/YY">
+        
+        <label>CVV</label>
+        <input type="text" placeholder="CVV">
+      </div>
+
+      <button type="submit">Place Order</button>
+    </form>
   </section>
 
- <script>
-  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-  const cartContainer = document.getElementById('cart-items');
-  const paymentMethod = document.getElementById('payment-method');
-  const visaForm = document.getElementById('visa-form');
+  <script>
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartContainer = document.getElementById('cart-items');
+    const paymentMethod = document.getElementById('payment-method');
+    const visaForm = document.getElementById('visa-form');
+    const cartTotal = document.getElementById('cart-total');
 
-cartContainer.innerHTML = cartItems.map((item, index) => `
-  <div class="cart-item">
-    <p><strong>${item.name}</strong> - Rs${item.price}</p>
-    <button class="remove-btn" data-index="${index}">❌ Remove</button>
-  </div>
-`).join('');
-   document.querySelectorAll('.remove-btn').forEach(button => {
-  button.addEventListener('click', (e) => {
-    const index = e.target.getAttribute('data-index');
-    cartItems.splice(index, 1); // Remove item from cart array
-    localStorage.setItem('cart', JSON.stringify(cartItems)); // Update storage
-    location.reload(); // Refresh the page to reflect change
-  });
-});
-  paymentMethod.addEventListener('change', () => {
-    visaForm.style.display = paymentMethod.value === 'visa' ? 'block' : 'none';
-  });
+    let totalAmount = 0;
 
-  document.getElementById('checkout-form').addEventListener('submit', (e) => {
-    e.preventDefault();
+    cartContainer.innerHTML = cartItems.map((item, index) => {
+      totalAmount += parseInt(item.price);
+      return `
+        <div class="cart-item">
+          <p><strong>${item.name}</strong> - Rs${item.price}</p>
+          <button class="remove-btn" data-index="${index}">❌ Remove</button>
+        </div>
+      `;
+    }).join('');
 
-    // Clear cart from localStorage
-    localStorage.removeItem('cart');
+    // ✅ Show total amount
+    cartTotal.textContent = `Total: Rs${totalAmount}`;
 
-    // Clear the UI
-    cartContainer.innerHTML = '';
+    document.querySelectorAll('.remove-btn').forEach(button => {
+      button.addEventListener('click', (e) => {
+        const index = e.target.getAttribute('data-index');
+        cartItems.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+        location.reload();
+      });
+    });
 
-    // Show success message
-    const successMessage = document.createElement('p');
-    successMessage.textContent = '✅ Order placed successfully!';
-    successMessage.style.color = 'green';
-    successMessage.style.fontWeight = 'bold';
-    cartContainer.appendChild(successMessage);
+    paymentMethod.addEventListener('change', () => {
+      visaForm.style.display = paymentMethod.value === 'visa' ? 'block' : 'none';
+    });
 
-    // Optionally, redirect to homepage after a few seconds
-    setTimeout(() => {
-      window.location.href = 'index.html';
-    }, 3000);
-  });
-</script>
-<script>
-  function toggleSidebar() {
-    const sidebar = document.getElementById("sidebar");
-    sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
-  }
-</script>
+    document.getElementById('checkout-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      localStorage.removeItem('cart');
+      cartContainer.innerHTML = '';
+      cartTotal.textContent = '';
+      const successMessage = document.createElement('p');
+      successMessage.textContent = '✅ Order placed successfully!';
+      successMessage.style.color = 'green';
+      successMessage.style.fontWeight = 'bold';
+      cartContainer.appendChild(successMessage);
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 3000);
+    });
+  </script>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+    }
+  </script>
+</body>
+</html>
