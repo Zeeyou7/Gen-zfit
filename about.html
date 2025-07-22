@@ -37,7 +37,6 @@
   <a href="#">Gen-Z</a>
   <a href="shop.html">Shop</a> <!-- Moved into sidebar -->
 </div>
-
   <section class="about">
     <h2>About Us</h2>
     <p>Gen-z Fit is a new-age apparel brand focused on minimalism, style, and comfort. Our mission is to provide trendy and affordable streetwear for the youth of today.</p>
@@ -46,5 +45,11 @@
   <footer>
     <p>&copy; 2025 Gen-z Fit. All rights reserved.</p>
   </footer>
+  <script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+  }
+</script>
 </body>
 </html>
